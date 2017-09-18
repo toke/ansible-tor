@@ -1,6 +1,5 @@
 ---
 
-
 - name: Tor packages
   package:
     name: tor
