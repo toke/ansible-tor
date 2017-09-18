@@ -1,5 +1,3 @@
-# Tor hidden services
-
 # Tor Hidden Services
 
 A role to configure a tor hidden service
