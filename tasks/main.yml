@@ -1,0 +1,69 @@
+---
+
+
+- name: Tor packages
+  package:
+    name: tor
+    state: installed
+  become: "{{ tor_become }}"
+
+- name: Manage Hidden Service directories
+  file:
+    path: "{{ item.dir }}"
+    owner: "{{ tor_user }}"
+    group: "{{ tor_group }}"
+    mode: 0700
+    state: directory
+  with_items:
+    "{{ hidden_services }}"
+  when: hidden_services is defined
+
+- set_fact:
+    tor_stored_hash: "{{ ansible_local.tor.tor_hashed_password | default(omit)}}"
+  when: ansible_local is defined and ansible_local.tor is defined 
+
+- name: Tor Password
+  tor_password:
+    password: "{{ tor_control_password }}"
+    password_hash: "{{ tor_stored_hash | default(omit)}}"
+  no_log: False
+  register: tor_password
+  when: tor_control_password is defined
+
+- debug: msg={{ tor_password }}
+
+## Store password
+- set_fact:
+    tor_persistence:
+      tor_hashed_password: "{{ tor_password['password_hash'] }}" 
+  when: tor_control_password is defined
+
+## Hack as long We can't read torrc
+- name: persist_password hash
+  template:
+    src: etc/ansible/facts.d/tor.json.j2
+    dest: /etc/ansible/facts.d/tor.fact
+    owner: root
+    group: root
+    mode: "0600"
+  when: tor_persistence is defined
+
+- name: Tor Configuration
+  template:
+    src: etc/tor/torrc.j2
+    dest: "{{ tor_config_dir }}/torrc"
+    owner: root
+    group: "{{ tor_root_group }}"
+    mode: 0644
+  notify: Reload Tor Service
+
+- block:
+  - name: Tor Service
+    service:
+      name: tor
+      state: started
+      enabled: yes
+  - name: wait for all tor hidden services hostname files
+    wait_for: state=present path="{{ item.dir }}/hostname" delay=5
+    with_items: "{{ hidden_services }}"
+  when: ansible_distribution != "MacOSX"

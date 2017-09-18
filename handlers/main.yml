@@ -1,0 +1,8 @@
+---
+
+- name: Reload Tor Service
+  service:
+    name: tor
+    state: reloaded
+    enabled: yes
+  when: ansible_distribution != "MaxOSX"
