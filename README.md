@@ -47,5 +47,5 @@ MIT License
 
 ## Author Information
 
-[Toke](https://github.com/toke)
-[Madonius](https://github.com/madonius)
+* [Toke](https://github.com/toke)
+* [Madonius](https://github.com/madonius)
