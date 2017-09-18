@@ -1,5 +1,4 @@
 ---
-
 tor_become: true
 tor_config_dir: /etc/tor
 tor_root_group: root
