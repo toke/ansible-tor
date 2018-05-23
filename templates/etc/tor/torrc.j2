@@ -16,7 +16,7 @@ HashedControlPassword {{ tor_password['password_hash'] }}
 
 ## The directory for keeping all the keys/etc. By default, we store
 ## things in $HOME/.tor on Unix, and in Application Data\tor on Windows.
-DataDirectory {{ tor_data_directory | default("/var/lib/tor") }}
+DataDirectory {{ tor_data_directory }}
 
 {% if hidden_services is defined %}
 ## Tor Hidden Service configuration
