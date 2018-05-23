@@ -1,6 +1,8 @@
 # Tor Hidden Services
 
-A role to configure a tor hidden service
+A role to configure tor hidden services.
+
+Can be found on [ansible-galaxy](https://galaxy.ansible.com/toke/tor/).
 
 ## Requirements
 
@@ -31,9 +33,9 @@ _None._
 ## Example Playbook
 
 ```yaml
-- hosts: servers
+- hosts: tor
   roles:
-    role: tor_hidden_services
+  - role: toke.tor
     hidden_services:
     - dir: /var/lib/tor/ssh-onion
       port: 22
