@@ -6,13 +6,14 @@ galaxy_info:
   license: "MIT"
   min_ansible_version: 2.2
   platforms:
+  - name: EL
+    versions:
+    - all
   - name: Debian
     versions:
-    - 6
-    - Squeeze
-    - 7
-    - Wheezy
-    - 8
-    - Jessie
-  categories:
-    - system
+    - all
+  - name: Arch
+    versions:
+    - all
+  galaxy_tags:
+    - tor
