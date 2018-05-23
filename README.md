@@ -16,8 +16,8 @@ _None._
 ##### ***Optional***:
 | Name               | Description                                    | Default Value |
 | :---               | :----------                                    | :------------ |
-| tor_user           | User under which tor is running                | tor           |
-| tor_group          | Group associated with the tor user             | tor           |
+| tor_user           | User under which tor is running                | debian-tor    |
+| tor_group          | Group associated with the tor user             | debian-tor    |
 | tor_become         | whether to become root during the installation | true          |
 | tor_config_dir     | Tor configuration file directory               | /etc/tor      |
 | tor_control_port   | If set use it as tor control port              | _None_        |
