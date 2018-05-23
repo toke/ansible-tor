@@ -1,0 +1,18 @@
+---
+
+galaxy_info:
+  author: Thomas Kerpe <toke@toke.de>
+  description: Ansible tor hidden services role
+  license: "MIT"
+  min_ansible_version: 2.2
+  platforms:
+  - name: Debian
+    versions:
+    - 6
+    - Squeeze
+    - 7
+    - Wheezy
+    - 8
+    - Jessie
+  categories:
+    - system
