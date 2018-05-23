@@ -14,14 +14,17 @@ _None._
 _None._
 
 ##### ***Optional***:
-| Name | Description | Default Value |
-| :--- | :---------- | :------------ |
-| tor_user | User under which tor is running | tor
-| tor_group | Group associated with the tor user | tor
-| tor_become | whether to become root during the installation | true
-| tor_config_dir | Tor configuration file directory | /etc/tor
-| tor_root_group | Group of the root-User | root
-| hidden_services | List of services to be set up | _None_ |
+| Name               | Description                                    | Default Value |
+| :---               | :----------                                    | :------------ |
+| tor_user           | User under which tor is running                | tor           |
+| tor_group          | Group associated with the tor user             | tor           |
+| tor_become         | whether to become root during the installation | true          |
+| tor_config_dir     | Tor configuration file directory               | /etc/tor      |
+| tor_control_port   | If set use it as tor control port              | _None_        |
+| tor_data_directory |                                                | /var/lib/tor  |
+| tor_password       | Password for control port                      | _None_        |
+| tor_root_group     | Group of the root-User                         | root          |
+| hidden_services    | List of services to be set up                  | _None_        |
 
 ##### ***Hidden service***
 * **dir**: Directory to store the hidden service configuration. 
