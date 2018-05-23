@@ -11,19 +11,23 @@ _None._
 ## Role Variables
 
 ##### ***Mandatory***:
-* **dir**: Location to store the Hidden service configuration
-* **port**: Port to be exposed in the TOR-Network
-* **source**: The ip-address and port of the service to be exposed
-
-To support version 3 onion services add **version**: 3 to the hidden_service
-configuration.
+_None._
 
 ##### ***Optional***:
 | Name | Description | Default Value |
 | :--- | :---------- | :------------ |
+| tor_user | User under which tor is running | tor
+| tor_group | Group associated with the tor user | tor
 | tor_become | whether to become root during the installation | true
 | tor_config_dir | Tor configuration file directory | /etc/tor
 | tor_root_group | Group of the root-User | root
+| hidden_services | List of services to be set up | _None_ |
+
+##### ***Hidden service***
+* **dir**: Directory to store the hidden service configuration. 
+* **port**: Port to expose to the TOR-Network
+* **source**: The ip-address and port of the service to be exposed.
+* *version*: When defined used as a hidden service version (usually not set or 3)
 
 
 ## Dependencies
