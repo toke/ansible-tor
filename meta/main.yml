@@ -15,5 +15,7 @@ galaxy_info:
   - name: ArchLinux
     versions:
     - all
+  - name: Alpine
+    versions: "3.7.0"
   galaxy_tags:
     - tor
