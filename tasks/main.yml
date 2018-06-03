@@ -3,7 +3,7 @@
 - name: Tor packages
   package:
     name: tor
-    state: installed
+    state: present
   become: "{{ tor_become }}"
 
 - name: Manage Hidden Service directories
